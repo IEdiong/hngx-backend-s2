@@ -1,4 +1,5 @@
 ﻿using hngXStageTwo.DbContexts;
+using hngXStageTwo.Entities;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,7 @@ if (builder.Environment.IsDevelopment())
     builder.Services.AddDbContext<PersonContext>(options =>
         options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 }
+builder.Services.AddScoped<User>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
