@@ -23,13 +23,14 @@ HNGX API is a simple REST API capable of CRUD operations on a `person` resource.
 
 ### API Endpoints
 
-| HTTP Verbs | Endpoints     | Action                                 |
-| ---------- | ------------- | -------------------------------------- |
-| POST       | /api          | To Create a new person                 |
-| GET        | /api          | To retrieve all persons                |
-| GET        | /api/{userId} | To retrieve details of a single person |
-| PUT        | /api/{userId} | To edit the details of a single person |
-| DELETE     | /api/{userId} | To delete a single person              |
+| HTTP Verbs | Endpoints | Action |
+| --- | --- | --- |
+| POST | /api | To Create a new person |
+| GET | /api | To retrieve all persons |
+| GET | /api?name=userName | To retrieve all persons with a particular name |
+| GET | /api/{userId} | To retrieve details of a single person |
+| PUT | /api/{userId} | To edit the details of a single person |
+| DELETE | /api/{userId} | To delete a single person |
 
 ### Technologies Used
 
@@ -41,4 +42,5 @@ HNGX API is a simple REST API capable of CRUD operations on a `person` resource.
 
 ### Authors
 
-- [Ediongsenyene Joseph](https://github.com/IEdiong)
+- [GitHub](https://github.com/IEdiong)
+- [LinkedIn](https://www.linkedin.com/in/iediong)

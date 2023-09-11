@@ -18,9 +18,18 @@ public class PersonController : ControllerBase
 
     // GET: /api/
     [HttpGet]
-    public ActionResult<IEnumerable<Person>> GetAllPersons()
+    public ActionResult<IEnumerable<Person>> GetAllPersons(string? name)
     {
-        return Ok(_personContext.People.ToList());
+        if (string.IsNullOrEmpty(name))
+        {
+            return Ok(_personContext.People.ToList());
+        }
+
+        var users = _personContext.People
+            .Where(p => p.Name.ToLower() == name.ToLower())
+            .ToList();
+
+        return Ok(users);
     }
 
     // GET: /api/userid

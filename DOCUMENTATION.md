@@ -1,5 +1,20 @@
 # HNGX API Documentation
 
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Base URL](#base-url)
+- [Authentication](#authentication)
+- [Endpoints](#endpoints)
+  - [Create a Person](#create-person)
+  - [Get All Persons](#get-all-persons)
+  - [Get All Persons with a name](#get-all-persons-with-a-name)
+  - [Get a Single Person](#get-a-single-person)
+  - [Update a Person](#update-a-person)
+  - [Delete a Person](#delete-a-person)
+- [Error Handling](#error-handling)
+- [UML Diagram](#uml-diagram)
+
 ## Introduction
 
 Welcome to the HNGX API documentation. This API allows you to perform basic CRUD operations on a person resource. You can create, read, update, and delete records using this API.
@@ -14,7 +29,7 @@ Authentication is required for any of the endpoints.
 
 ## Endpoints
 
-### Create a `Person`
+### Create a Person
 
 - **Endpoint:** `/api`
 - **Method:** POST
@@ -40,7 +55,7 @@ Authentication is required for any of the endpoints.
   }
   ```
 
-### Get All `Persons`
+### Get All Persons
 
 - **Endpoint:** `/api`
 - **Method:** GET
@@ -63,7 +78,30 @@ Authentication is required for any of the endpoints.
 ]
 ```
 
-### Get a Single `Person`
+### Get All Persons with a name
+
+- **Endpoint:** `/api?name=userName`
+- **Method:** GET
+- **Response:**
+- **Status Code:** 200 (OK)
+- **Body:**
+
+```json
+[
+  {
+	 "id": 3,
+	"name": "John Smith",
+	"email": "smithjon@hng.com" (optional)
+  },
+  {
+	 "id": 4,
+	"name": "John Smith",
+	"email": "johnsmith@hng.com" (optional)
+  }
+]
+```
+
+### Get a Single Person
 
 - **Endpoint:** `/api/{userId}`
 - **Method:** GET
@@ -80,7 +118,7 @@ Authentication is required for any of the endpoints.
   }
   ```
 
-### Update a `Person`
+### Update a Person
 
 - **Endpoint:** `/api/{userId}`
 - **Method:** PUT
@@ -96,7 +134,7 @@ Authentication is required for any of the endpoints.
 - **Response:**
   - **Status Code:** 204 (No Content)
 
-### Delete a `Person`
+### Delete a Person
 
 - **Endpoint:** `/api/{userId}`
 - **Method:** DELETE
@@ -134,3 +172,9 @@ Example Error Response for Geting a Single Person:
   "traceId": "00-84547c6677eda9c0ba5db8e3d8bef99a-f0d43591c547a460-00"
 }
 ```
+
+## UML Diagram
+
+### Class Diagram
+
+![Class Diagram](./Uml/classDiagram.png)
