@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 if (builder.Environment.IsDevelopment())
 {
-    var connectionString = builder.Configuration.GetConnectionString("PersonDb");
+    var connectionString = builder.Configuration.GetConnectionString("smarteraspDb");
     builder.Services.AddDbContext<PersonContext>(options =>
         options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 }
