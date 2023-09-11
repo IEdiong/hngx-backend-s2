@@ -6,7 +6,7 @@ Welcome to the HNGX API documentation. This API allows you to perform basic CRUD
 
 ## Base URL
 
-The base URL for this API is: `https://api.example.com`
+The base URL for this API is: `https://hngx-backend-s2-orzv-dev.fl0.io`
 
 ## Authentication
 
