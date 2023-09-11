@@ -18,16 +18,16 @@ public class PersonController : ControllerBase
 
     // GET: /api/
     [HttpGet]
-    public ActionResult<IEnumerable<User>> GetAllPersons()
+    public ActionResult<IEnumerable<Person>> GetAllPersons()
     {
-        return Ok(_personContext.Users.ToList());
+        return Ok(_personContext.People.ToList());
     }
 
     // GET: /api/userid
-    [HttpGet("{userid}", Name = "GetPerson")]
-    public ActionResult<User> GetPersonById([FromRoute] int userId)
+    [HttpGet("{userId}", Name = "GetPerson")]
+    public ActionResult<Person> GetPersonById([FromRoute] int userId)
     {
-        var user = _personContext.Users.FirstOrDefault(user => user.Id == userId);
+        var user = _personContext.People.FirstOrDefault(user => user.Id == userId);
         if (user == null)
         {
             return NotFound();
@@ -40,31 +40,26 @@ public class PersonController : ControllerBase
     [HttpPost]
     public ActionResult CreatePerson(PersonForCreationDto newUser)
     {
-        DateTime currentDateTime = DateTime.Now;
-        string formattedDateTime = currentDateTime.ToString("yyyy-MM-ddTHH:mm:ssZ");
-        User userToAdd = new()
+        Person userToAdd = new()
         {
-            FirstName = newUser.FirstName,
-            LastName = newUser.LastName,
+            Name = newUser.Name,
             Email = newUser.Email,
-            Birthdate = newUser.Birthdate,
-            Address = newUser.Address,
-            PhoneNumber = newUser.PhoneNumber,
-            CreatedTime = DateTime.UtcNow,
-            UpdatedTime = DateTime.UtcNow
         };
-        _personContext.Users.Add(userToAdd);
+        _personContext.People.Add(userToAdd);
         _personContext.SaveChanges();
 
-        return NoContent();
+        return CreatedAtRoute("GetPerson", new
+        {
+            userId = userToAdd.Id
+        }, userToAdd);
     }
 
     // PUT: /api/userid
-    [HttpPut("{userid}")]
+    [HttpPut("{userId}")]
     public ActionResult UpdatePerson(
         int userId, [FromBody] PersonForCreationDto updateUser)
     {
-        var userFromStore = _personContext.Users
+        var userFromStore = _personContext.People
             .FirstOrDefault(user => user.Id == userId);
 
         if (userFromStore == null)
@@ -72,12 +67,8 @@ public class PersonController : ControllerBase
             return NotFound();
         }
 
-        userFromStore.FirstName = updateUser.FirstName;
-        userFromStore.LastName = updateUser.LastName;
+        userFromStore.Name = updateUser.Name;
         userFromStore.Email = updateUser.Email;
-        userFromStore.Address = updateUser.Address;
-        userFromStore.PhoneNumber = updateUser.PhoneNumber;
-        userFromStore.UpdatedTime = DateTime.Now;
 
         _personContext.SaveChanges();
 
@@ -85,10 +76,10 @@ public class PersonController : ControllerBase
     }
 
     // DELETE: /api/userid
-    [HttpDelete("{userid}")]
+    [HttpDelete("{userId}")]
     public ActionResult DeletePerson(int userId)
     {
-        var userFromStore = _personContext.Users
+        var userFromStore = _personContext.People
             .FirstOrDefault(user => user.Id == userId);
 
         if (userFromStore == null)
@@ -96,7 +87,7 @@ public class PersonController : ControllerBase
             return NotFound();
         }
 
-        _personContext.Users.Remove(userFromStore);
+        _personContext.People.Remove(userFromStore);
         _personContext.SaveChanges();
 
         return NoContent();

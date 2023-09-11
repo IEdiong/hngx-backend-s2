@@ -5,7 +5,7 @@ namespace hngXStageTwo.DbContexts
 {
 	public class PersonContext : DbContext
 	{
-		public DbSet<User> Users { get; set; } = null!;
+		public DbSet<Person> People { get; set; } = null!;
 
 		public PersonContext(DbContextOptions<PersonContext> options)
 			: base(options)
@@ -14,18 +14,12 @@ namespace hngXStageTwo.DbContexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-			modelBuilder.Entity<User>().HasData(
-				new User
+			modelBuilder.Entity<Person>().HasData(
+				new Person
 				{
 					Id = 1,
-					FirstName = "John",
-					LastName = "Doe",
+					Name = "John Doe",
 					Email = "john.doe@yahoo.com",
-					Birthdate = new DateTime(1985,07,15),
-					Address = "123 Main St, Anytown, CA",
-					PhoneNumber = 2345586752,
-					CreatedTime = DateTime.Now,
-					UpdatedTime = DateTime.Now
 				}
 				);
             base.OnModelCreating(modelBuilder);
