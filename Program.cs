@@ -8,7 +8,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 if (builder.Environment.IsDevelopment())
 {
-    var connectionString = builder.Configuration.GetConnectionString("smarteraspDb");
+    var connectionString = builder.Configuration.GetConnectionString("PersonDb");
+    //var connectionString = Environment.GetEnvironmentVariable("Smarterasp");
+
+    builder.Services.AddDbContext<PersonContext>(options =>
+        options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+}
+else
+{
+    var connectionString = Environment.GetEnvironmentVariable("Smarterasp");
+    //var connectionString = builder.Configuration.GetSection("Smarterasp").Value;
+
     builder.Services.AddDbContext<PersonContext>(options =>
         options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 }
