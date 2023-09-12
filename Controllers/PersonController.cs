@@ -16,22 +16,6 @@ public class PersonController : ControllerBase
         _personContext = personContext;
     }
 
-    // GET: /api/
-    [HttpGet]
-    public ActionResult<IEnumerable<Person>> GetAllPersons(string? name)
-    {
-        if (string.IsNullOrEmpty(name))
-        {
-            return Ok(_personContext.People.ToList());
-        }
-
-        var users = _personContext.People
-            .Where(p => p.Name.ToLower() == name.ToLower())
-            .ToList();
-
-        return Ok(users);
-    }
-
     // GET: /api/userid
     [HttpGet("{userId}", Name = "GetPerson")]
     public ActionResult<Person> GetPersonById([FromRoute] int userId)

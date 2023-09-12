@@ -7,8 +7,6 @@
 - [Authentication](#authentication)
 - [Endpoints](#endpoints)
   - [Create a Person](#create-person)
-  - [Get All Persons](#get-all-persons)
-  - [Get All Persons with a name](#get-all-persons-with-a-name)
   - [Get a Single Person](#get-a-single-person)
   - [Update a Person](#update-a-person)
   - [Delete a Person](#delete-a-person)
@@ -54,52 +52,6 @@ Authentication is required for any of the endpoints.
     "email": "markessien@hng.com" (optional)
   }
   ```
-
-### Get All Persons
-
-- **Endpoint:** `/api`
-- **Method:** GET
-- **Response:**
-- **Status Code:** 200 (OK)
-- **Body:**
-
-```json
-[
-  {
-	 "id": 1,
-	"name": "Mark Essien",
-	"email": "markessien@hng.com" (optional)
-  },
-  {
-	 "id": 2,
-	"name": "John Doe",
-	"email": "johndoe@hng.com" (optional)
-  }
-]
-```
-
-### Get All Persons with a name
-
-- **Endpoint:** `/api?name=userName`
-- **Method:** GET
-- **Response:**
-- **Status Code:** 200 (OK)
-- **Body:**
-
-```json
-[
-  {
-	 "id": 3,
-	"name": "John Smith",
-	"email": "smithjon@hng.com" (optional)
-  },
-  {
-	 "id": 4,
-	"name": "John Smith",
-	"email": "johnsmith@hng.com" (optional)
-  }
-]
-```
 
 ### Get a Single Person
 

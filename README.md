@@ -7,7 +7,6 @@ HNGX API is a simple REST API capable of CRUD operations on a `person` resource.
 ### HNGX API Features
 
 - Users can create a new `person`
-- Get a list of people
 - Get a single person
 - Update a person
 - Delete a person
@@ -23,14 +22,12 @@ HNGX API is a simple REST API capable of CRUD operations on a `person` resource.
 
 ### API Endpoints
 
-| HTTP Verbs | Endpoints | Action |
-| --- | --- | --- |
-| POST | /api | To Create a new person |
-| GET | /api | To retrieve all persons |
-| GET | /api?name=userName | To retrieve all persons with a particular name |
-| GET | /api/{userId} | To retrieve details of a single person |
-| PUT | /api/{userId} | To edit the details of a single person |
-| DELETE | /api/{userId} | To delete a single person |
+| HTTP Verbs | Endpoints     | Action                                 |
+| ---------- | ------------- | -------------------------------------- |
+| POST       | /api          | To Create a new person                 |
+| GET        | /api/{userId} | To retrieve details of a single person |
+| PUT        | /api/{userId} | To edit the details of a single person |
+| DELETE     | /api/{userId} | To delete a single person              |
 
 ### Technologies Used
 
